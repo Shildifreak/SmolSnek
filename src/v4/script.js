@@ -1,28 +1,4 @@
-<style>
-body {
-	touch-action: pan-x pan-y;
-	padding: 0px;
-	margin: 0px;
-}
-#f {
-	height: min(100vh, 50vw);
-	width: min(200vh, 100vw);
-}
-.e {
-	background: lightgrey;
-}
-.s {
-	background: blue;
-}
-.a {
-	background: red;
-}
-</style>
-<div id="f"></div>
-
-<script>
 var my_document = document; // alias so minifier knows its ok to rename this
-var my_Math = Math;
 var className = 'className';
 
 var field = my_document.getElementById('f');
@@ -50,8 +26,6 @@ for (n = 0; n < HEIGHT_TIMES_WIDTH; n++) {
 }
 
 var move = () => {
-	my_document.cookie = my_Math.max((cells[0].innerText = my_document.cookie || 0), snake.length);
-	
 	x = snake[0];
 	x += dx;
 	cell = cells[x] || cells[WIDTH-1];
@@ -71,7 +45,7 @@ var move = () => {
 		grow--;
 	}
 	
-	x = my_Math.floor(my_Math.random() * HEIGHT_TIMES_WIDTH * 10);
+	x = Math.floor(Math.random() * HEIGHT_TIMES_WIDTH * 100);
 	cell = cells[x] || {};
 	if (cell[className] == 'e') {
 		cell[className] = 'a';
@@ -93,5 +67,3 @@ my_document.addEventListener('pointerdown' , (e) => {
 
 
 var intervalId = window.setInterval(move, 100);
-
-</script>

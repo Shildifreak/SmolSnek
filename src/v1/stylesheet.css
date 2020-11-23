@@ -1,0 +1,13 @@
+.cell {
+position: absolute;
+border: 1px solid black;
+}
+.cell.empty {
+background-color: white;
+}
+.cell.snake {
+background-color: blue;
+}
+.apple {
+background-color: red;
+}

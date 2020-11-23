@@ -1,0 +1,18 @@
+body {
+	padding: 0px;
+	margin: 0px;
+	overflow: hidden;
+}
+#f {
+	height: min(100vh, 50vw);
+	width: calc(min(200vh, 100vw) * 1.05);
+}
+.e {
+background: lightgrey;
+}
+.s {
+background: blue;
+}
+.a {
+background: red;
+}

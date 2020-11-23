@@ -1,0 +1,18 @@
+body {
+	padding: 0px;
+	margin: 0px;
+	overflow: hidden;
+}
+#field {
+	height: min(100vh, 50vw);
+	width: min(200vh, 100vw);
+}
+.empty {
+background-color: lightgrey;
+}
+.snake {
+background-color: blue;
+}
+.apple {
+background-color: red;
+}

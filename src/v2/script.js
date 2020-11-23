@@ -1,29 +1,3 @@
-<html>
-<head>
-<style>
-body {
-	padding: 0px;
-	margin: 0px;
-	overflow: hidden;
-}
-#field {
-	height: min(100vh, 50vw);
-	width: min(200vh, 100vw);
-}
-.empty {
-background-color: lightgrey;
-}
-.snake {
-background-color: blue;
-}
-.apple {
-background-color: red;
-}
-</style>
-</head>
-<body>
-<div id="field"></div>
-<script>
 var field = document.getElementById('field');
 const HEIGHT = 10;
 const WIDTH = 21;
@@ -74,6 +48,3 @@ document.addEventListener('keydown', function (event) {
 	dx = {37:-1,38:-WIDTH,39:1,40:WIDTH}[event.keyCode] || dx;
 });
 var intervalId = window.setInterval(move, 100);
-</script>
-</body>
-</html>

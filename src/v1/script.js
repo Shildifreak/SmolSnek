@@ -1,24 +1,3 @@
-<html>
-<head>
-<style>
-.cell {
-position: absolute;
-border: 1px solid black;
-}
-.cell.empty {
-background-color: white;
-}
-.cell.snake {
-background-color: blue;
-}
-.apple {
-background-color: red;
-}
-</style>
-</head>
-<body>
-<div id="field_border" style="border: 1px solid black; height:450px; width: 800px; position: relative;"></div>
-<script>
 var field = [];
 var field_object = document.getElementById('field_border');
 const HEIGHT = 10;
@@ -77,6 +56,3 @@ document.addEventListener('keydown', function (event) {
 	[dx, dy] = {37:[-1,0],38:[0,-1],39:[1,0],40:[0,1]}[event.keyCode];
 });
 var intervalId = window.setInterval(move, 100);
-</script>
-</body>
-</html>

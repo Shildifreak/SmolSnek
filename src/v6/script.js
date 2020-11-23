@@ -1,42 +1,3 @@
-<style>
-body {
-	touch-action: pan-x pan-y;
-	padding: 0px;
-	margin: 0px;
-}
-#f {
-	height: min(100vh, 50vw);
-	width: min(200vh, 100vw);
-}
-.e {
-	background: lightgrey;
-}
-.s {
-	background: blue;
-}
-.a {
-	background: red;
-}
-.end {
-	z-index:1;
-	transition-property: top left;
-	transition-duration: 0.09s;
-	transition-timing-function: linear;
-	top: 0px;
-	left: 0px;
-	position: absolute;
-	width: min(10vh, 5vw);
-	height: min(10vh, 5vw);
-	background: blue;
-}
-
-</style>
-<div id="h" class="end"></div>
-<div id="t" class="end"></div>
-<div id="f">
-</div>
-
-<script>
 var my_document = document; // alias so minifier knows its ok to rename this
 var my_Math = Math;
 var className = 'className';
@@ -53,7 +14,6 @@ var grow = 0;
 var snake = [0];
 var dx = 1;
 var cell, style;
-//var rect;
 
 for (n = 0; n < HEIGHT_TIMES_WIDTH; n++) {
 	cell = my_document.createElement('div');
@@ -76,8 +36,6 @@ var set_pos = (end, p) => {
 }
 
 var move = () => {
-	my_document.cookie = my_Math.max((cells[0].innerText = my_document.cookie || 0), snake.length);
-	
 	x = snake[0];
 	prevcell = cells[x] || cells[WIDTH-1];
 	x += dx;
@@ -107,18 +65,13 @@ var move = () => {
 	if (cell[className] == 'e') {
 		cell[className] = 'a';
 	}
+	
+	// highscore line has to be at the end of move because cookies don't work for local pages on chrome
+	my_document.cookie = my_Math.max((cells[0].innerText = my_document.cookie || 0), snake.length);
 }
 my_document.addEventListener('keydown', (e) => {
 	dx = {37:-1,38:-WIDTH,39:1,40:WIDTH}[e.keyCode] || dx;
 });
-
-//my_document.addEventListener('pointerdown' , (e) => {
-//	dx = (dx * dx != 1) ? (
-//		(e.x > rect.x) ? ( 1 ) : ( -1 )
-//	) : (
-//		(e.y > rect.y) ? ( WIDTH ) : ( -WIDTH )
-//	);
-//});
 
 my_document.addEventListener('pointerdown' , (e) => {
 	dx = (
@@ -132,5 +85,3 @@ my_document.addEventListener('pointerdown' , (e) => {
 
 
 var intervalId = window.setInterval(move, 100);
-
-</script>
