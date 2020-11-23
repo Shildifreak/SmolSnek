@@ -1,14 +1,17 @@
 #! /usr/bin/env bash
 
-strip-json-comments minify_config.json > tmp.json
+strip-json-comments minify_config.json > build/minify_config.json
 
-url='data:text/html;base64,'$(html-minifier-terser --config-file tmp.json index5.html | base64 -w0)
+FILES=src/*
+for f in $FILES
+do
+	url='data:text/html;base64,'$(html-minifier-terser --config-file build/minify_config.json $f | base64 -w0)
+	
+	echo -n "$f: "
+	echo $url | wc -c
+	
+	fn=$(basename -- "${f%%.html}")
+	echo -n $url > "build/${fn}.url"
+	echo -n $url | qrencode -o "dist/${fn}.png"
 
-rm tmp.json
-
-echo $url
-echo
-echo $url | wc -c
-
-echo -n $url > index5.url
-echo -n $url | qrencode -o index5.png
+done
