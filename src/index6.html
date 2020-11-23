@@ -17,8 +17,24 @@ body {
 .a {
 	background: red;
 }
+.end {
+	z-index:1;
+	transition-property: top left;
+	transition-duration: 0.09s;
+	transition-timing-function: linear;
+	top: 0px;
+	left: 0px;
+	position: absolute;
+	width: min(10vh, 5vw);
+	height: min(10vh, 5vw);
+	background: blue;
+}
+
 </style>
-<div id="f"></div>
+<div id="h" class="end"></div>
+<div id="t" class="end"></div>
+<div id="f">
+</div>
 
 <script>
 var my_document = document; // alias so minifier knows its ok to rename this
@@ -26,6 +42,8 @@ var my_Math = Math;
 var className = 'className';
 
 var field = my_document.getElementById('f');
+var head = my_document.getElementById('h');
+var tail = my_document.getElementById('t');
 var cells = field.children;
 var HEIGHT = 10;
 var WIDTH = 21;
@@ -35,6 +53,7 @@ var grow = 0;
 var snake = [0];
 var dx = 1;
 var cell, style;
+//var rect;
 
 for (n = 0; n < HEIGHT_TIMES_WIDTH; n++) {
 	cell = my_document.createElement('div');
@@ -49,22 +68,34 @@ for (n = 0; n < HEIGHT_TIMES_WIDTH; n++) {
 	field.appendChild(cell);
 }
 
+var set_pos = (end, p) => {
+	style = end.style;
+	prefix = 'calc(min(10vh, 5vw) * ';
+	style.left = prefix + p%(WIDTH) + ')';
+	style.top = prefix + Math.floor(p/(WIDTH)) + ')';
+}
+
 var move = () => {
 	my_document.cookie = my_Math.max((cells[0].innerText = my_document.cookie || 0), snake.length);
 	
 	x = snake[0];
+	prevcell = cells[x] || cells[WIDTH-1];
 	x += dx;
 	cell = cells[x] || cells[WIDTH-1];
 	if (cell[className] != 's') {
 		if (cell[className] == 'a') {
 			grow ++;
 		}
-		cell[className] = 's';
+		prevcell[className] = 's';
 		snake.unshift(x);
+		
+		set_pos(head, x);
 	}
 	if (grow == 0) {
 		if (snake.length > 1) {
 			cells[snake.pop()][className] = 'e';
+
+			set_pos(tail, snake[snake.length-1]);
 		}
 	}
 	else {
@@ -80,6 +111,14 @@ var move = () => {
 my_document.addEventListener('keydown', (e) => {
 	dx = {37:-1,38:-WIDTH,39:1,40:WIDTH}[e.keyCode] || dx;
 });
+
+//my_document.addEventListener('pointerdown' , (e) => {
+//	dx = (dx * dx != 1) ? (
+//		(e.x > rect.x) ? ( 1 ) : ( -1 )
+//	) : (
+//		(e.y > rect.y) ? ( WIDTH ) : ( -WIDTH )
+//	);
+//});
 
 my_document.addEventListener('pointerdown' , (e) => {
 	dx = (
