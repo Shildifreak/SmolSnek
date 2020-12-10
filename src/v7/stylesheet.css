@@ -1,0 +1,33 @@
+body {
+	touch-action: pan-x pan-y;
+	padding: 0px;
+	margin: 0px;
+}
+#f {
+	height: min(100vh, 50vw);
+	width: min(200vh, 100vw);
+}
+.e {
+	background: lightgrey;
+}
+.s {
+	background: blue;
+}
+.a {
+	transition-property: background;
+	transition-duration: 0.5s;
+	transition-timing-function: linear;
+	background: darkred;
+}
+.end {
+	z-index:1;
+	transition-property: top left;
+	transition-duration: 0.09s;
+	transition-timing-function: linear;
+	top: 0px;
+	left: 0px;
+	position: absolute;
+	width: min(10vh, 5vw);
+	height: min(10vh, 5vw);
+	background: blue;
+}

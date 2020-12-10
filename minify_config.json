@@ -122,7 +122,7 @@
 //	process-scripts <value>                  // Array of strings corresponding to types of script elements to process through minifier (e.g. "text/ng-template", "text/x-handlebars-template", etc.)
 //	quote-character <value>                  // Type of quote to use for attribute values (' or ")
 	"removeAttributeQuotes"         : true,  // Remove quotes around attributes when possible.
-	"removeComments"                : true,  // Strip HTML comments
+	"removeComments"                : false,  // Strip HTML comments
 //	remove-empty-attributes                  // Remove all attributes with whitespace-only values
 //	remove-empty-elements                    // Remove all elements with empty contents
 	"removeOptionalTags"            : true,  // Remove unrequired tags

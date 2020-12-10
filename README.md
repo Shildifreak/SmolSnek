@@ -33,3 +33,4 @@ Prebuilt QR Codes can be found at https://github.com/Shildifreak/SmolSnek/releas
 |   4   | added touch controls                                                     |
 |   5   | added highscore                                                          |
 |   6   | added smoother animations                                                |
+|   7   | added smarter apples                                                     |
