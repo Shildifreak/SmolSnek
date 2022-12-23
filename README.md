@@ -2,6 +2,8 @@
 
 Snake made to fit on a QR Code  
   
+inspired by MattKC: https://mattkc.com/etc/snakeqr/  
+  
 The versions in src/ are self contained and should work as is.  
   
 Using included `toolchain.bash` script all versions can be turned into a QR Code.  
